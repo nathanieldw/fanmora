@@ -11,6 +11,11 @@ use App\Http\Controllers\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
+    // OAuth Routes
+    Route::get('auth/{provider}', 'App\Http\Controllers\Auth\OAuthController@redirect')->name('oauth.redirect');
+    Route::get('auth/{provider}/callback', 'App\Http\Controllers\Auth\OAuthController@callback')->name('oauth.callback');
+    Route::get('auth/complete-profile', 'App\Http\Controllers\Auth\OAuthController@showCompleteProfile')->name('oauth.complete-profile.show');
+    Route::post('auth/complete-profile', 'App\Http\Controllers\Auth\OAuthController@completeProfile')->name('oauth.complete-profile');
     Route::get('register', [RegisteredUserController::class, 'create'])
         ->name('register');
 

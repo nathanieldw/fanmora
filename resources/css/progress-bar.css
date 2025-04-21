@@ -1,0 +1,7 @@
+.upload-progress-bar {
+  background-color: #00AFF0;
+  height: 0.5rem;
+  border-radius: 9999px;
+  transition: width 0.3s ease;
+  width: var(--progress-percentage, 0%);
+}
