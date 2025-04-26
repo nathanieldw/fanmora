@@ -147,7 +147,7 @@ export function PostMedia({ post, onMediaClick }: PostMediaProps) {
             {showNavigation && (
                 <>
                     <button
-                        className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/30 rounded-full p-2 text-white backdrop-blur-sm"
+                        className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/30 rounded-full p-2 text-white backdrop-blur-sm cursor-pointer hover:bg-black/10 transition-colors"
                         onClick={handlePrev}
                         aria-label="Previous slide"
                     >
@@ -162,7 +162,7 @@ export function PostMedia({ post, onMediaClick }: PostMediaProps) {
                         </svg>
                     </button>
                     <button
-                        className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/30 rounded-full p-2 text-white backdrop-blur-sm"
+                        className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/30 rounded-full p-2 text-white backdrop-blur-sm cursor-pointer hover:bg-black/10 transition-colors"
                         onClick={handleNext}
                         aria-label="Next slide"
                     >
