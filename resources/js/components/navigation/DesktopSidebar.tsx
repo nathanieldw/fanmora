@@ -22,11 +22,10 @@ import Logo from '@/components/ui/Logo';
 
 interface SidebarProps {
     user: User;
-    onCreatePost?: () => void;
     className?: string;
 }
 
-const DesktopSidebar = ({ user, onCreatePost, className }: SidebarProps) => {
+export default function DesktopSidebar({ user, className }: SidebarProps) {
     // Function to determine if a link is active
     const isActive = (routeName: string) => route().current(routeName);
 
@@ -72,15 +71,15 @@ const DesktopSidebar = ({ user, onCreatePost, className }: SidebarProps) => {
                     icon={<HeartIcon className="w-full h-full" />}
                     label="Notifications"
                 />
-                <div
-                    onClick={onCreatePost}
+                <Link
+                    href={route('post.create')}
                     className="flex items-center gap-4 px-3 py-3 rounded-lg cursor-pointer text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
                 >
                     <div className="w-6 h-6">
                         <PlusCircleIcon className="w-full h-full" />
                     </div>
                     <span className="text-base">Create</span>
-                </div>
+                </Link>
 
                 {/* Profile Link */}
                 <Link
@@ -117,6 +116,4 @@ const DesktopSidebar = ({ user, onCreatePost, className }: SidebarProps) => {
             </div>
         </aside>
     );
-};
-
-export default DesktopSidebar;
+}

@@ -30,8 +30,12 @@ export default function Welcome() {
     return (
         <>
             <Head title="Welcome">
-                <link rel="preconnect" href="https://fonts.bunny.net" />
-                <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
+                {/* add meta tags */}
+                <meta name="description" content="Connect with like-minded people and share your passions" />
+                <meta name="keywords" content="fanmora, social media, connect, like-minded, passions" />
+                <meta name="author" content="Fanmora" />
+                <meta name="robots" content="index, follow" />
+                <meta name="viewport" content="width=device-width, initial-scale=1" />
             </Head>
             <div className="flex min-h-screen flex-col bg-white dark:bg-gray-900">
                 {/* Hero section with login form */}

@@ -25,7 +25,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('posts/create', function () {
         return Inertia::render('post/create');
-    })->name('posts.create');
+    })->name('post.create');
 
     // Assuming profile.show takes a username (adjust model/key if needed)
     Route::get('profile/{user:username}', function (App\Models\User $user) {
@@ -34,7 +34,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     })->name('profile.show');
 
     // Post Routes
-    Route::post('posts', [PostController::class, 'store'])->name('posts.store');
+    Route::post('posts', [PostController::class, 'store'])->name('post.store');
     Route::get('posts/{post}', [PostController::class, 'show'])->name('posts.show');
     Route::get('api/posts/{post}/with-recommendations', [PostController::class, 'showWithRecommendations'])->name('api.posts.recommendations');
 
@@ -52,7 +52,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('api/users/{user}/posts', [App\Http\Controllers\PostController::class, 'getUserPosts'])->name('api.users.posts');
     // Place this route after all routes with parameters to prevent conflicts
     Route::get('api/saved-posts', [App\Http\Controllers\PostController::class, 'getSavedPosts'])->name('api.saved-posts');
-    
+
     // Story Routes
     Route::prefix('api/stories')->group(function () {
         Route::get('/', [App\Http\Controllers\StoryController::class, 'index'])->name('api.stories.index');
@@ -60,7 +60,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::post('/{story}/view', [App\Http\Controllers\StoryController::class, 'markAsViewed'])->name('api.stories.view');
         Route::delete('/{story}', [App\Http\Controllers\StoryController::class, 'destroy'])->name('api.stories.destroy');
     });
-    
+
     // Subscription Routes
     Route::get('subscriptions', [App\Http\Controllers\SubscriptionController::class, 'index'])->name('subscriptions');
     Route::get('subscribe/{creator}', [App\Http\Controllers\SubscriptionController::class, 'create'])->name('subscription.create');

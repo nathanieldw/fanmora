@@ -10,17 +10,16 @@ import SuggestionsSidebar from '@/components/navigation/SuggestionsSidebar';
 interface AuthenticatedLayoutProps {
     user: User;
     header?: ReactNode;
-    onCreatePost?: () => void;
 }
 
-export default function Authenticated({ user, header, children, onCreatePost }: PropsWithChildren<AuthenticatedLayoutProps>) {
+export default function Authenticated({ user, header, children }: PropsWithChildren<AuthenticatedLayoutProps>) {
     return (
         <div className="min-h-screen bg-white dark:bg-black">
             {/* Instagram-like 3-column Layout */}
             <div className="flex">
                 {/* Left Sidebar - Desktop Only */}
                 <div className="hidden md:block md:w-[244px] xl:w-[335px] border-r border-gray-200 dark:border-gray-800 h-screen sticky top-0">
-                    <DesktopSidebar user={user} onCreatePost={onCreatePost} />
+                    <DesktopSidebar user={user} />
                 </div>
 
                 {/* Main Content Area */}
@@ -39,7 +38,7 @@ export default function Authenticated({ user, header, children, onCreatePost }: 
 
             {/* Mobile Navigation - Fixed to bottom */}
             <div className="md:hidden">
-                <MobileNav user={user} onCreatePost={onCreatePost} />
+                <MobileNav user={user} />
             </div>
         </div>
     );
