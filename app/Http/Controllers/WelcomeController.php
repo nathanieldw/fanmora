@@ -12,14 +12,18 @@ class WelcomeController extends Controller
     /**
      * Display the welcome page with featured posts
      */
-    public function index()
+    public function index(Request $request)
     {
+        if ($request->user()) {
+            return redirect()->route('dashboard');
+        }
+
         // Find the official Fanmora account
         $fanmoraAccount = User::where('username', 'fanmora')->first();
-        
+
         // Fetch featured posts (or return empty array if account doesn't exist yet)
         $featuredPosts = [];
-        
+
         if ($fanmoraAccount) {
             $featuredPosts = Post::where('user_id', $fanmoraAccount->id)
                 ->with(['user', 'media'])
@@ -46,7 +50,7 @@ class WelcomeController extends Controller
                     ];
                 });
         }
-        
+
         return Inertia::render('welcome', [
             'featuredPosts' => $featuredPosts,
         ]);
